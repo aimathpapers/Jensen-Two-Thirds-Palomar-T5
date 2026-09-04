@@ -1,5 +1,4 @@
 import Solution.TheoremSevenOne
 
 #print axioms centered_xi_continuation_agrees_at_positive_integers
-#print axioms sectorial_centered_xi_coefficient_asymptotic
-#print axioms sectorial_centered_xi_error_derivatives_through_six
+#print axioms sectorial_centered_xi_asymptotic_and_derivatives

@@ -18,9 +18,9 @@ holomorphic saddle branch solving
 on a `1/100` proof sector.  On the `1/200` outer coefficient sector, the
 coefficient, the displayed saddle main, and their relative error are
 holomorphic and the main is nonzero.  On the closed `1/400` inner sector the
-exact factorization has relative error `O(log |M| / |M|)`.  A second theorem
-records the proportional-disc Cauchy estimates for the first six derivatives
-of that same relative error.
+exact factorization has relative error `O(log |M| / |M|)`.  The same theorem
+couples that saddle branch and relative error with proportional-disc Cauchy
+estimates for its first six derivatives.
 
 The first compared theorem below checks the normalization seam: at every
 positive integer, the complex theta/Gamma continuation is exactly the even
@@ -125,10 +125,11 @@ theorem centered_xi_continuation_agrees_at_positive_integers :
       centeredXiCoefficient (n + 1) := by
   sorry
 
-/-- Literal three-sector form of manuscript Theorem 7.1. -/
-theorem sectorial_centered_xi_coefficient_asymptotic :
-    ∃ R C : ℝ, ∃ L E : ℂ → ℂ,
-      0 < R ∧ 0 < C ∧
+/-- Literal three-sector form of manuscript Theorem 7.1 together with Cauchy
+transport through order six.  The same `L` and `E` witness both conclusions. -/
+theorem sectorial_centered_xi_asymptotic_and_derivatives :
+    ∃ R C D : ℝ, ∃ L E : ℂ → ℂ,
+      0 < R ∧ 0 < C ∧ 0 < D ∧
       IsOpen (proofSectorAt R) ∧
       DifferentiableOn ℂ L (proofSectorAt R) ∧
       (∀ s ∈ proofSectorAt R, saddleEquation s (L s) = 0) ∧
@@ -139,26 +140,9 @@ theorem sectorial_centered_xi_coefficient_asymptotic :
       (∀ M ∈ outerSectorAt R,
         xiCoefficientMain L M ≠ 0 ∧
         E M = xiCoefficientMoment M / xiCoefficientMain L M - 1) ∧
-      ∀ M ∈ innerSectorAt R,
+      (∀ M ∈ innerSectorAt R,
         xiCoefficientMoment M = xiCoefficientMain L M * (1 + E M) ∧
-        ‖E M‖ ≤ C * Real.log ‖M‖ / ‖M‖ := by
-  sorry
-
-/-- Cauchy transport through order six for the exact relative error appearing
-in the sectorial theorem. -/
-theorem sectorial_centered_xi_error_derivatives_through_six :
-    ∃ R D : ℝ, ∃ L E : ℂ → ℂ,
-      0 < R ∧ 0 < D ∧
-      IsOpen (proofSectorAt R) ∧
-      DifferentiableOn ℂ L (proofSectorAt R) ∧
-      (∀ s ∈ proofSectorAt R, saddleEquation s (L s) = 0) ∧
-      IsOpen (outerSectorAt R) ∧
-      DifferentiableOn ℂ xiCoefficientMoment (outerSectorAt R) ∧
-      DifferentiableOn ℂ (xiCoefficientMain L) (outerSectorAt R) ∧
-      DifferentiableOn ℂ E (outerSectorAt R) ∧
-      (∀ M ∈ outerSectorAt R,
-        xiCoefficientMain L M ≠ 0 ∧
-        E M = xiCoefficientMoment M / xiCoefficientMain L M - 1) ∧
+        ‖E M‖ ≤ C * Real.log ‖M‖ / ‖M‖) ∧
       ∀ x : ℝ, R < x → ∀ j ≤ 6,
         ‖iteratedDeriv j E (x : ℂ)‖ ≤
           j.factorial * (D * Real.log (3 * x) / x) /

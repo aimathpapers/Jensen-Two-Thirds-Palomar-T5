@@ -215,10 +215,11 @@ theorem centered_xi_continuation_agrees_at_positive_integers :
   rw [xiCoefficientMoment_eq, Z.complexXiCoefficientMoment_nat_succ,
     centeredXiCoefficient_eq]
 
-/-- Proved solution of the literal three-sector manuscript theorem. -/
-theorem sectorial_centered_xi_coefficient_asymptotic :
-    ∃ R C : ℝ, ∃ L E : ℂ → ℂ,
-      0 < R ∧ 0 < C ∧
+/-- Proved three-sector manuscript theorem and Cauchy derivative consequence
+with one shared saddle branch and relative-error witness. -/
+theorem sectorial_centered_xi_asymptotic_and_derivatives :
+    ∃ R C D : ℝ, ∃ L E : ℂ → ℂ,
+      0 < R ∧ 0 < C ∧ 0 < D ∧
       IsOpen (proofSectorAt R) ∧
       DifferentiableOn ℂ L (proofSectorAt R) ∧
       (∀ s ∈ proofSectorAt R, saddleEquation s (L s) = 0) ∧
@@ -229,14 +230,23 @@ theorem sectorial_centered_xi_coefficient_asymptotic :
       (∀ M ∈ outerSectorAt R,
         xiCoefficientMain L M ≠ 0 ∧
         E M = xiCoefficientMoment M / xiCoefficientMain L M - 1) ∧
-      ∀ M ∈ innerSectorAt R,
+      (∀ M ∈ innerSectorAt R,
         xiCoefficientMoment M = xiCoefficientMain L M * (1 + E M) ∧
-        ‖E M‖ ≤ C * Real.log ‖M‖ / ‖M‖ := by
-  refine ⟨Z.manuscriptTheoremRadius, Z.manuscriptPaperErrorCoefficient,
+        ‖E M‖ ≤ C * Real.log ‖M‖ / ‖M‖) ∧
+      ∀ x : ℝ, R < x → ∀ j ≤ 6,
+        ‖iteratedDeriv j E (x : ℂ)‖ ≤
+          j.factorial * (D * Real.log (3 * x) / x) /
+            cauchyRadius x ^ j := by
+  refine ⟨Z.manuscriptTheoremRadius,
+    Z.manuscriptPaperErrorCoefficient,
+    Z.manuscriptXiCoefficientErrorCoefficient,
     Z.quantitativeSaddleBranch, Z.manuscriptPaperRelativeError,
-    Real.exp_pos _, ?_, isOpen_proofSector, ?_, ?_, ?_⟩
+    Real.exp_pos _, ?_, ?_, isOpen_proofSector, ?_, ?_, ?_⟩
   · norm_num [Z.manuscriptPaperErrorCoefficient,
       Z.manuscriptXiCoefficientErrorCoefficient,
+      Z.complexXiCoefficientErrorCoefficient,
+      Z.fullThetaMomentErrorCoefficient]
+  · norm_num [Z.manuscriptXiCoefficientErrorCoefficient,
       Z.complexXiCoefficientErrorCoefficient,
       Z.fullThetaMomentErrorCoefficient]
   · exact Z.quantitativeSaddleBranch_differentiableOn_leanSector.mono
@@ -251,7 +261,7 @@ theorem sectorial_centered_xi_coefficient_asymptotic :
       funext xiCoefficientMoment_eq
     have hmainEq : xiCoefficientMain Z.quantitativeSaddleBranch =
         Z.manuscriptXiCoefficientMain := funext xiCoefficientMain_eq
-    refine ⟨?_, ?_, ?_, ?_, ?_, ?_⟩
+    refine ⟨?_, ?_, ?_, ?_, ?_, ?_, ?_⟩
     · simpa only [outerSector_eq] using hopen
     · rw [outerSector_eq, hactualEq]
       exact hactual
@@ -268,56 +278,6 @@ theorem sectorial_centered_xi_coefficient_asymptotic :
         simpa only [innerSector_eq] using hM
       have h := hinner M hM'
       simpa only [xiCoefficientMoment_eq, xiCoefficientMain_eq] using h
-
-/-- Proved Cauchy derivative consequence through order six. -/
-theorem sectorial_centered_xi_error_derivatives_through_six :
-    ∃ R D : ℝ, ∃ L E : ℂ → ℂ,
-      0 < R ∧ 0 < D ∧
-      IsOpen (proofSectorAt R) ∧
-      DifferentiableOn ℂ L (proofSectorAt R) ∧
-      (∀ s ∈ proofSectorAt R, saddleEquation s (L s) = 0) ∧
-      IsOpen (outerSectorAt R) ∧
-      DifferentiableOn ℂ xiCoefficientMoment (outerSectorAt R) ∧
-      DifferentiableOn ℂ (xiCoefficientMain L) (outerSectorAt R) ∧
-      DifferentiableOn ℂ E (outerSectorAt R) ∧
-      (∀ M ∈ outerSectorAt R,
-        xiCoefficientMain L M ≠ 0 ∧
-        E M = xiCoefficientMoment M / xiCoefficientMain L M - 1) ∧
-      ∀ x : ℝ, R < x → ∀ j ≤ 6,
-        ‖iteratedDeriv j E (x : ℂ)‖ ≤
-          j.factorial * (D * Real.log (3 * x) / x) /
-            cauchyRadius x ^ j := by
-  refine ⟨Z.manuscriptTheoremRadius,
-    Z.manuscriptXiCoefficientErrorCoefficient,
-    Z.quantitativeSaddleBranch, Z.manuscriptPaperRelativeError,
-    Real.exp_pos _, ?_, isOpen_proofSector, ?_, ?_, ?_⟩
-  · norm_num [Z.manuscriptXiCoefficientErrorCoefficient,
-      Z.complexXiCoefficientErrorCoefficient,
-      Z.fullThetaMomentErrorCoefficient]
-  · exact Z.quantitativeSaddleBranch_differentiableOn_leanSector.mono
-      proofSector_subset
-  · intro s hs
-    rw [saddleEquation_eq]
-    exact (Z.quantitativeSaddleBranch_spec
-      (Z.leanSaddleSector_quantitative (proofSector_subset hs))).2.1
-  · rcases Z.manuscriptTheoremSevenOne_effective with
-      ⟨hopen, hactual, hmain, herror, hne, _hinner⟩
-    have hactualEq : xiCoefficientMoment = Z.complexXiCoefficientMoment :=
-      funext xiCoefficientMoment_eq
-    have hmainEq : xiCoefficientMain Z.quantitativeSaddleBranch =
-        Z.manuscriptXiCoefficientMain := funext xiCoefficientMain_eq
-    refine ⟨?_, ?_, ?_, ?_, ?_, ?_⟩
-    · simpa only [outerSector_eq] using hopen
-    · rw [outerSector_eq, hactualEq]
-      exact hactual
-    · rw [outerSector_eq, hmainEq]
-      exact hmain
-    · simpa only [outerSector_eq] using herror
-    · intro M hM
-      have hM' : M ∈ Z.manuscriptOuterSector := by
-        simpa only [outerSector_eq] using hM
-      exact ⟨by simpa only [xiCoefficientMain_eq] using hne M hM',
-        publicError_eq M⟩
     · intro x hx j hj
       have h := Z.manuscriptPaperRelativeError_derivatives_through_six hx j hj
       simpa only [cauchyRadius, Z.manuscriptCauchyRadius,

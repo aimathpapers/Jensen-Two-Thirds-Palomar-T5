@@ -6,11 +6,10 @@ Permanent Version 1.1 paper record: https://doi.org/10.5281/zenodo.22293642
 
 ## Exact scope
 
-The Comparator topic records three declarations:
+The Comparator topic records two declarations:
 
-1. the exact positive-integer identification of the centered-xi coefficient continuation;
-2. the uniform three-sector saddle-point asymptotic used by manuscript Theorem 7.1; and
-3. the proportional-disc derivative bounds through order six used by the interpolation residual.
+1. the exact positive-integer identification of the centered-xi coefficient continuation; and
+2. one shared-witness theorem coupling the uniform three-sector saddle-point asymptotic with the proportional-disc derivative bounds through order six used by the interpolation residual.
 
 This entry does **not** state or verify the final Jensen-polynomial hyperbolicity theorem. That theorem also consumes T1-T4 and the algebraic finite-free-convolution chain described in the paper and its technical supplement.
 

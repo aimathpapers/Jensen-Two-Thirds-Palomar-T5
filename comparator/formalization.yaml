@@ -23,10 +23,10 @@ sources:
   - title: "A Two-Thirds Hyperbolicity Wedge for Jensen Polynomials of Riemann's Xi-Function"
     authors:
       - "John Savva"
-    type: "original-proof"
+    type: "preprint"
     id: "https://doi.org/10.5281/zenodo.22293642"
     location: "Theorem 7.1 and its Cauchy derivative consequence"
-    relationship: "other"
+    relationship: "formalizes"
     author_endorsement: "participated"
   - title: "Jensen polynomials for the Riemann zeta function and other sequences"
     authors: ["Michael Griffin", "Ken Ono", "Larry Rolen", "Don Zagier"]
@@ -55,13 +55,13 @@ classification:
 
 status:
   scope: >
-    Three compared declarations formalize the paper's analytic input T5 and
+    Two compared declarations formalize the paper's analytic input T5 and
     its normalization seam: agreement with the actual centered-xi Taylor
-    coefficient at positive integers, the exact three-sector coefficient
-    asymptotic, and proportional-disc Cauchy estimates for relative-error
-    derivatives through order six. The final Jensen-polynomial hyperbolicity
-    theorem also uses T1-T4 and a separate algebraic finite-free-convolution
-    chain, which are outside this Palomar entry.
+    coefficient at positive integers, and one shared-witness theorem coupling
+    the exact three-sector coefficient asymptotic with proportional-disc Cauchy
+    estimates for derivatives of that same relative error through order six.
+    The final Jensen-polynomial hyperbolicity theorem also uses T1-T4 and a
+    separate algebraic finite-free-convolution chain outside this Palomar entry.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms: ["propext", "Classical.choice", "Quot.sound"]
@@ -72,13 +72,7 @@ status:
       axioms: ["propext", "Classical.choice", "Quot.sound"]
       comparator_config: "comparator/config-theorem-seven-one.json"
       literature_dependencies: []
-    - declaration: "sectorial_centered_xi_coefficient_asymptotic"
-      file: "comparator/Solution/TheoremSevenOne.lean"
-      sorry_count: 0
-      axioms: ["propext", "Classical.choice", "Quot.sound"]
-      comparator_config: "comparator/config-theorem-seven-one.json"
-      literature_dependencies: []
-    - declaration: "sectorial_centered_xi_error_derivatives_through_six"
+    - declaration: "sectorial_centered_xi_asymptotic_and_derivatives"
       file: "comparator/Solution/TheoremSevenOne.lean"
       sorry_count: 0
       axioms: ["propext", "Classical.choice", "Quot.sound"]
@@ -149,19 +143,17 @@ alignment:
       note: >
         Identifies the theta and Gamma continuation with the even Taylor
         coefficient of Riemann's centered xi-function at every positive integer.
-    - source: "Manuscript Theorem 7.1"
-      lean: "sectorial_centered_xi_coefficient_asymptotic"
+    - source: "Manuscript Theorem 7.1 and its proportional-disc Cauchy consequence"
+      lean: "sectorial_centered_xi_asymptotic_and_derivatives"
       module: "Challenge.TheoremSevenOne / Solution.TheoremSevenOne"
       status: "proved"
       note: >
         The Challenge imports only Mathlib and spells out the theta Mellin
         moment, Gamma quotient, coefficient continuation, saddle equation,
-        curvature, displayed main term, and three fixed sectors.
-    - source: "Theorem 7.1 proportional-disc Cauchy consequence"
-      lean: "sectorial_centered_xi_error_derivatives_through_six"
-      module: "Challenge.TheoremSevenOne / Solution.TheoremSevenOne"
-      status: "proved"
-      note: "Covers every derivative order consumed by the sixth-order residual argument."
+        curvature, displayed main term, and three fixed sectors. One pair of
+        saddle-branch and relative-error witnesses satisfies both the sectorial
+        factorization and every derivative estimate through order six consumed
+        by the sixth-order residual argument.
 
 palomar:
   project_path: ""
