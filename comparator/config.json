@@ -1,0 +1,27 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "two_thirds_on_critical_line",
+    "two_thirds_on_critical_line_cumulative",
+    "half_simple_on_critical_line",
+    "half_simple_on_critical_line_cumulative",
+    "three_quarters_distinct",
+    "three_quarters_distinct_cumulative",
+    "montgomery_taylor_on_critical_line",
+    "montgomery_taylor_simple_on_critical_line",
+    "montgomery_taylor_distinct",
+    "dirichlet_two_thirds_on_critical_line",
+    "dirichlet_half_simple_on_critical_line",
+    "dirichlet_three_quarters_distinct",
+    "dirichlet_montgomery_taylor_on_critical_line",
+    "dirichlet_montgomery_taylor_simple_on_critical_line",
+    "dirichlet_montgomery_taylor_distinct"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

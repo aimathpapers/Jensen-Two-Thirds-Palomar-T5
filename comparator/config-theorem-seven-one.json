@@ -1,0 +1,15 @@
+{
+  "challenge_module": "Challenge.TheoremSevenOne",
+  "solution_module": "Solution.TheoremSevenOne",
+  "theorem_names": [
+    "centered_xi_continuation_agrees_at_positive_integers",
+    "sectorial_centered_xi_coefficient_asymptotic",
+    "sectorial_centered_xi_error_derivatives_through_six"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

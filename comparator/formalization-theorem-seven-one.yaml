@@ -1,0 +1,179 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Sectorial asymptotics for centered Riemann-xi coefficients"
+  description: >
+    Formalizes the exact centered-xi coefficient normalization, a uniform
+    sectorial saddle-point asymptotic, and relative-error derivative estimates
+    through order six. These are the analytic inputs used by a two-thirds
+    hyperbolicity-wedge theorem for Jensen polynomials of Riemann's xi-function.
+    This Palomar topic does not itself state the final Jensen-polynomial
+    hyperbolicity theorem.
+  authors:
+    - name: "John Savva"
+      github: "jsavva"
+  responsible_maintainers:
+    - name: "John Savva"
+  license: "Apache-2.0"
+
+repository:
+  role: "substantive-development"
+
+sources:
+  - title: "A Two-Thirds Hyperbolicity Wedge for Jensen Polynomials of Riemann's Xi-Function"
+    authors:
+      - "John Savva"
+    type: "original-proof"
+    location: "https://doi.org/10.5281/zenodo.22293642; Theorem 7.1 and its Cauchy derivative consequence"
+    relationship: "other"
+    author_endorsement: "participated"
+  - title: "Jensen polynomials for the Riemann zeta function and other sequences"
+    authors: ["Michael Griffin", "Ken Ono", "Larry Rolen", "Don Zagier"]
+    id: "doi:10.1073/pnas.1902572116"
+    type: "article"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+  - title: "Jensen polynomials for the Riemann xi-function"
+    authors: ["Michael Griffin", "Ken Ono", "Larry Rolen", "Jesse Thorner", "Zachary Tripp", "Ian Wagner"]
+    id: "arXiv:1910.01227v3"
+    type: "preprint"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+  - title: "A new hyperbolicity wedge and a joint semicircle limit for Jensen polynomials of Riemann's xi-function"
+    authors: ["Jonathan Holland"]
+    id: "arXiv:2608.08682v1"
+    type: "preprint"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+
+related_formalizations: []
+
+classification:
+  arxiv: ["math.NT", "math.CV"]
+  msc2020: ["11M06", "30D10", "30E15"]
+
+status:
+  scope: >
+    Three compared declarations formalize the paper's analytic input T5 and
+    its normalization seam: agreement with the actual centered-xi Taylor
+    coefficient at positive integers, the exact three-sector coefficient
+    asymptotic, and proportional-disc Cauchy estimates for relative-error
+    derivatives through order six. The final Jensen-polynomial hyperbolicity
+    theorem also uses T1-T4 and a separate algebraic finite-free-convolution
+    chain, which are outside this Palomar entry.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Classical.choice", "Quot.sound"]
+  main_results:
+    - declaration: "centered_xi_continuation_agrees_at_positive_integers"
+      file: "comparator/Solution/TheoremSevenOne.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator/config-theorem-seven-one.json"
+      literature_dependencies: []
+    - declaration: "sectorial_centered_xi_coefficient_asymptotic"
+      file: "comparator/Solution/TheoremSevenOne.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator/config-theorem-seven-one.json"
+      literature_dependencies: []
+    - declaration: "sectorial_centered_xi_error_derivatives_through_six"
+      file: "comparator/Solution/TheoremSevenOne.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator/config-theorem-seven-one.json"
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "OpenAI GPT-5.6 Sol Pro"
+        - "Additional models used for adversarial testing and AI-only review"
+      framework: "AI-assisted development with repository-local verification workflows"
+      tool_setup: >
+        Lean 4 with pinned Mathlib; deterministic Python and SymPy checks;
+        Wolfram Mathematica clean-room recalculation executed by the human
+        maintainer; semantic mutation tests; Comparator-oriented Challenge and
+        Solution separation; repeated AI-only adversarial reviews.
+      cost:
+        wall_time: "multi-phase research and formalization project"
+        spend_usd: "subscription-based and API-assisted usage; not separately itemized"
+        hardware: "Apple Silicon workstation plus hosted model inference"
+      prompting_notes: >
+        The human maintainer selected the mathematical direction, requested
+        staged exact-algebra-first formalization, ran the independent
+        Mathematica notebook, directed repair of reported blockers, reviewed
+        the artifacts, and accepts responsibility for the submission.
+    - method: "manual"
+      models: []
+      framework: "Human direction and clean-room computer algebra"
+      tool_setup: "Wolfram Mathematica and review of generated artifacts"
+  spend_usd: "not separately itemized"
+  notes: >
+    AI systems produced substantial Lean and prose. All executable claims in
+    scope were accepted by Lean. The Challenge deliberately contains sorry
+    placeholders required by Comparator; those placeholders are excluded from
+    the Solution and production sorry counts.
+
+fidelity:
+  divergences: >
+    The paper states existence of a small outer sector and a smaller closed
+    inner sector. The formal statement fixes explicit angles 1/200 and 1/400
+    and additionally exposes the wider 1/100 proof sector needed for the
+    affine parameter shift. It makes the saddle branch, holomorphy,
+    nonvanishing, quotient definition of the error, and derivative estimates
+    explicit. These are strengthenings or clarifications, not weakened claims.
+
+review:
+  status: "agent-reviewed"
+  reviewers:
+    - "Multiple AI analytic, algebraic, Lean, reproducibility, and hostile-review agents"
+  notes: >
+    No human expert or peer review has occurred and none is claimed. Earlier
+    AI reviews found substantive transcription, contour, and formal-vacuity
+    problems; those were repaired and re-reviewed. A fresh Phase 33 AI-only
+    re-review found no release-blocking issue and two P3 advisories, both
+    repaired in Version 1.1. Palomar is not peer review, does not establish
+    novelty, and does not verify the informal manuscript proof independently
+    of the formal statement.
+
+alignment:
+  namespace: "JensenT5Public"
+  statements:
+    - source: "Exact xi-coefficient normalization used by Theorem 7.1"
+      lean: "centered_xi_continuation_agrees_at_positive_integers"
+      module: "Challenge.TheoremSevenOne / Solution.TheoremSevenOne"
+      status: "proved"
+      note: >
+        Identifies the theta and Gamma continuation with the even Taylor
+        coefficient of Riemann's centered xi-function at every positive integer.
+    - source: "Manuscript Theorem 7.1"
+      lean: "sectorial_centered_xi_coefficient_asymptotic"
+      module: "Challenge.TheoremSevenOne / Solution.TheoremSevenOne"
+      status: "proved"
+      note: >
+        The Challenge imports only Mathlib and spells out the theta Mellin
+        moment, Gamma quotient, coefficient continuation, saddle equation,
+        curvature, displayed main term, and three fixed sectors.
+    - source: "Theorem 7.1 proportional-disc Cauchy consequence"
+      lean: "sectorial_centered_xi_error_derivatives_through_six"
+      module: "Challenge.TheoremSevenOne / Solution.TheoremSevenOne"
+      status: "proved"
+      note: "Covers every derivative order consumed by the sixth-order residual argument."
+
+palomar:
+  project_path: ""
+  challenge_file: "comparator/Challenge/TheoremSevenOne.lean"
+  solution_file: "comparator/Solution/TheoremSevenOne.lean"
+  challenge_module: "Challenge.TheoremSevenOne"
+  solution_module: "Solution.TheoremSevenOne"
+  comparator_config: "comparator/config-theorem-seven-one.json"
+  metadata_file: "comparator/formalization-theorem-seven-one.yaml"
+  enable_nanoda: true
+
+acknowledgements: >
+  Mathlib and Lean provide the formal foundation. Comparator and NanoDa are the
+  submission-side verification tools. The cited papers supply the surrounding
+  Jensen-polynomial context; no endorsement by their authors is implied.
