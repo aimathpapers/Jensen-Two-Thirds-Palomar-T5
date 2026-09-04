@@ -23,8 +23,8 @@ couples that saddle branch and relative error with proportional-disc Cauchy
 estimates for its first six derivatives.
 
 The first compared theorem below checks the normalization seam: at every
-positive integer, the complex theta/Gamma continuation is exactly the even
-Taylor coefficient of Riemann's xi function centered at `1/2`.
+positive integer, the complex theta/Gamma continuation is exactly the
+factorial-normalized even Taylor coefficient of Riemann's xi centered at `1/2`.
 
 These are the analytic statements called T5 and Theorem 7.1 in the paper.
 They do not assert the final Jensen-hyperbolicity theorem by themselves.  The
@@ -118,8 +118,8 @@ open JensenT5Public
 
 noncomputable section
 
-/-- The theta/Gamma continuation is the actual centered-xi coefficient at
-every positive integer. -/
+/-- The theta/Gamma continuation is the factorial-normalized even Taylor
+coefficient of centered xi at every positive integer. -/
 theorem centered_xi_continuation_agrees_at_positive_integers :
     ∀ n : ℕ, xiCoefficientMoment ((n + 1 : ℕ) : ℂ) =
       centeredXiCoefficient (n + 1) := by

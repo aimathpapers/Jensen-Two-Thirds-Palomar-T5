@@ -16,10 +16,10 @@ ordinary formulas:
 - the proportional Cauchy radius `x/1000`.
 
 The same file then states two results with deliberate `sorry` holes: exact
-agreement of the continuation with the actual centered-xi coefficient at
-positive integers, and one shared-witness theorem coupling the literal
-three-sector coefficient asymptotic with derivative estimates through order
-six for that same relative error. Palomar does not allow the trusted challenge
+agreement of the continuation with the factorial-normalized even Taylor
+coefficient of centered xi at positive integers, and one shared-witness theorem
+coupling the literal three-sector coefficient asymptotic with derivative
+estimates through order six for that same relative error. Palomar does not allow the trusted challenge
 to import a candidate-local helper module, so the Mathlib-only definition block
 is embedded directly in the challenge and repeated byte-for-byte in
 `Solution/TheoremSevenOne.lean`. The solution proves the statements by a

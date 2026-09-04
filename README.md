@@ -8,7 +8,7 @@ Permanent Version 1.1 paper record: https://doi.org/10.5281/zenodo.22293642
 
 The Comparator topic records two declarations:
 
-1. the exact positive-integer identification of the centered-xi coefficient continuation; and
+1. the exact positive-integer identification of the centered-xi coefficient continuation with the factorial-normalized even Taylor coefficient; and
 2. one shared-witness theorem coupling the uniform three-sector saddle-point asymptotic with the proportional-disc derivative bounds through order six used by the interpolation residual.
 
 This entry does **not** state or verify the final Jensen-polynomial hyperbolicity theorem. That theorem also consumes T1-T4 and the algebraic finite-free-convolution chain described in the paper and its technical supplement.

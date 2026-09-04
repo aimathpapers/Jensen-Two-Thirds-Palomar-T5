@@ -47,7 +47,13 @@ sources:
     relationship: "background"
     author_endorsement: "not-contacted"
 
-related_formalizations: []
+related_formalizations:
+  - id: "https://github.com/anthropics/zeta-23-lean/tree/cec57f919ccf34e5fa5372b4ba332f7c848bbb6e"
+    relationship: "builds-on"
+    note: >
+      Extends the Zeta23 Lean development at this immutable revision by adding
+      the Jensen-Theorem-7.1 production cone and Comparator topic. The retained
+      Zeta23 core and its license and notice files originate from that snapshot.
 
 classification:
   arxiv: ["math.NT", "math.CV"]
@@ -56,12 +62,13 @@ classification:
 status:
   scope: >
     Two compared declarations formalize the paper's analytic input T5 and
-    its normalization seam: agreement with the actual centered-xi Taylor
-    coefficient at positive integers, and one shared-witness theorem coupling
-    the exact three-sector coefficient asymptotic with proportional-disc Cauchy
-    estimates for derivatives of that same relative error through order six.
-    The final Jensen-polynomial hyperbolicity theorem also uses T1-T4 and a
-    separate algebraic finite-free-convolution chain outside this Palomar entry.
+    its normalization seam: agreement with the factorial-normalized even
+    Taylor coefficient of centered xi at positive integers, and one
+    shared-witness theorem coupling the exact three-sector coefficient
+    asymptotic with proportional-disc Cauchy estimates for derivatives of that
+    same relative error through order six. The final Jensen-polynomial
+    hyperbolicity theorem also uses T1-T4 and a separate algebraic
+    finite-free-convolution chain outside this Palomar entry.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms: ["propext", "Classical.choice", "Quot.sound"]
@@ -141,8 +148,8 @@ alignment:
       module: "Challenge.TheoremSevenOne / Solution.TheoremSevenOne"
       status: "proved"
       note: >
-        Identifies the theta and Gamma continuation with the even Taylor
-        coefficient of Riemann's centered xi-function at every positive integer.
+        Identifies the theta and Gamma continuation with the factorial-normalized
+        even Taylor coefficient of Riemann's centered xi at every positive integer.
     - source: "Manuscript Theorem 7.1 and its proportional-disc Cauchy consequence"
       lean: "sectorial_centered_xi_asymptotic_and_derivatives"
       module: "Challenge.TheoremSevenOne / Solution.TheoremSevenOne"

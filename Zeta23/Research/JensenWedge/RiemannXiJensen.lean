@@ -8,7 +8,8 @@ import Zeta23.Research.JensenWedge.QuantitativeBranch
 This module fixes the real coefficient sequence and polynomial to which the
 conditional two-thirds root theorem applies.  The coefficients are defined
 from the manuscript's real omega integral, and their complexifications are
-proved equal to the even Taylor coefficients of Mathlib's centered xi.
+proved equal to the factorial-normalized even Taylor coefficients of Mathlib's
+centered xi.
 
 The final theorems do not manufacture the remaining Jacobi/MMP/MSS or
 sixth-residual inputs.  They state those dependencies through the existing
@@ -31,7 +32,7 @@ def riemannXiCoefficientReal (n : ℕ) : ℝ :=
     ∫ u in Ioi (0 : ℝ), u ^ (2 * n) * omegaLogAmplitude u
 
 /-- Exact identification of the real omega coefficient with the complex
-centered-xi Taylor coefficient proved in T1. -/
+factorial-normalized centered-xi Taylor coefficient proved in T1. -/
 theorem ofReal_riemannXiCoefficientReal (n : ℕ) :
     (riemannXiCoefficientReal n : ℂ) = centeredXiCoefficient n := by
   rw [centeredXiCoefficient_eq_omegaMoment,
