@@ -18,7 +18,7 @@ This entry does **not** state or verify the final Jensen-polynomial hyperbolicit
 
 - Project path: repository root (leave the form field blank)
 - Comparator configuration: `comparator/config-theorem-seven-one.json`
-- Formalization metadata: `comparator/formalization-theorem-seven-one.yaml`
+- Formalization metadata: `comparator/formalization.yaml`
 - Challenge: `comparator/Challenge/TheoremSevenOne.lean`
 - Solution: `comparator/Solution/TheoremSevenOne.lean`
 

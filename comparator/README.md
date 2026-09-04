@@ -108,4 +108,4 @@ The `TheoremSevenOne` topic is the Palomar-facing package for the analytic
 theorem used by the new two-thirds Jensen-wedge manuscript. Its detailed
 statement map, local commands, candid review disclosure, and submission-form
 paths are in `THEOREM_SEVEN_ONE_README.md` and
-`formalization-theorem-seven-one.yaml`.
+`formalization.yaml`.

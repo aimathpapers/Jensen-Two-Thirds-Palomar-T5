@@ -11,10 +11,9 @@ project:
     This Palomar topic does not itself state the final Jensen-polynomial
     hyperbolicity theorem.
   authors:
-    - name: "John Savva"
-      github: "jsavva"
+    - "John Savva"
   responsible_maintainers:
-    - name: "John Savva"
+    - "John Savva"
   license: "Apache-2.0"
 
 repository:
@@ -25,7 +24,8 @@ sources:
     authors:
       - "John Savva"
     type: "original-proof"
-    location: "https://doi.org/10.5281/zenodo.22293642; Theorem 7.1 and its Cauchy derivative consequence"
+    id: "https://doi.org/10.5281/zenodo.22293642"
+    location: "Theorem 7.1 and its Cauchy derivative consequence"
     relationship: "other"
     author_endorsement: "participated"
   - title: "Jensen polynomials for the Riemann zeta function and other sequences"
@@ -170,7 +170,7 @@ palomar:
   challenge_module: "Challenge.TheoremSevenOne"
   solution_module: "Solution.TheoremSevenOne"
   comparator_config: "comparator/config-theorem-seven-one.json"
-  metadata_file: "comparator/formalization-theorem-seven-one.yaml"
+  metadata_file: "comparator/formalization.yaml"
   enable_nanoda: true
 
 acknowledgements: >

@@ -49,7 +49,7 @@ C48_PYTHON="$PWD/.venv/bin/python" bash ground_zero_work/phase29/verify_phase29.
 
 - project path: repository root in the dedicated public candidate
 - Comparator config: `comparator/config-theorem-seven-one.json`
-- metadata: `comparator/formalization-theorem-seven-one.yaml`
+- metadata: `comparator/formalization.yaml`
 
 The repository must be public and the submitted revision must be a pushed,
 full 40-character commit SHA. Palomar's NanoDa and automated editorial checks
